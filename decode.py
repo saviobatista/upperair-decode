@@ -48,7 +48,7 @@ def decodeTTAA(message):
     else:
       if (idx-2) % 3 == 0:
         preffix = getPreffix(data[idx][0:2])
-        res[preffix+'Pressure'] = ( '1' if int(data[idx][2:])<200 else '' )+data[idx][2:]+'mb'
+        res[preffix+'Pressure'] = ( '1' if int(data[idx][2:4])<200 else '' )+data[idx][2:4]+'mb'
       elif (idx-2) % 3 == 1:
         if data[idx].isnumeric():
           res[preffix+'Temperature'] = (-1 if int(data[idx][2:3])%2==1 else 1) * int(data[idx][0:3])/10
