@@ -54,7 +54,7 @@ def decodeTTAA(message):
         if data[idx].isnumeric():
           res[preffix+'Temperature'] = (-1 if int(data[idx][2:3])%2==1 else 1) * int(data[idx][0:3])/10
           res[preffix+'DewpointDepression'] = ( int(data[idx][3:])/10 if int(data[idx][3:]) < 50 else int(data[idx][3:]) - 50 )
-          res[preffix+'Dewpoint'] = res[preffix+'Temperature'] - res[preffix+'DewpointDepression']
+          res[preffix+'Dewpoint'] = (res[preffix+'Temperature'] - res[preffix+'DewpointDepression']).__round__(2)
         else:
           res[preffix+'Temperature'] = '///'
           res[preffix+'DewpointDepression'] = '///'
